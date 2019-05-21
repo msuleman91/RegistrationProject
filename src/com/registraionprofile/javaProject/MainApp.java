@@ -10,11 +10,18 @@ public class MainApp {
 	private static Date date;
 
 	public static void main(String[] args) throws ParseException {
+		
+		UserRepository userRepo= new UserRepository();
 
 		Scanner input = new Scanner(System.in);
 
 		UserProfile user = new UserProfile();
-
+		
+		System.out.println("Enter User ID");
+		int userId= input.nextInt();
+		user.setUserId(userId);
+		
+		
 		// Set first name
 
 		System.out.println("Enter User First Name");
@@ -116,37 +123,14 @@ public class MainApp {
 		}
 
 		user.setConfirmPassword(confirmhere);
+		System.out.println(user);
+		
+		userRepo.addUser(user);
 }
 
 
-		System.out.println(user);
+		
 
-		/*
-		 * Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]",
-		 * Pattern.CASE_INSENSITIVE); Pattern UpperCasePatten =
-		 * Pattern.compile("[A-Z ]"); Pattern lowerCasePatten =
-		 * Pattern.compile("[a-z ]"); Pattern digitCasePatten =
-		 * Pattern.compile("[0-9 ]");
-		 * 
-		 * 
-		 * 
-		 * if (!passwordhere.equals(confirmhere)) {
-		 * System.out.println("password and confirm password does not match"); } if
-		 * (passwordhere.length() < 8) {
-		 * System.out.println("Password lenght must have alleast 8 character !!");
-		 * 
-		 * } if (!specailCharPatten.matcher(passwordhere).find()) {
-		 * System.out.println("Password must have atleast one specail character !!");
-		 * 
-		 * } if (!UpperCasePatten.matcher(passwordhere).find()) {
-		 * System.out.println("Password must have atleast one uppercase character !!");
-		 * } if (!lowerCasePatten.matcher(passwordhere).find()) {
-		 * System.out.println("Password must have atleast one lowercase character !!");
-		 * } if (!digitCasePatten.matcher(passwordhere).find()) {
-		 * System.out.println("Password must have atleast one digit character !!"); }
-		 * 
-		 */
+		
 
 	}
-
-}

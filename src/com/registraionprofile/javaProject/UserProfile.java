@@ -2,6 +2,7 @@ package com.registraionprofile.javaProject;
 
 public class UserProfile {
 
+	private int userId;
 	private String fname;
 	private String lastName;
 	private String phoneNumber;
@@ -33,13 +34,18 @@ public class UserProfile {
 	 * confirmPassword = confirmPassword; }
 	 */
 
-	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public String getFname() {
 		return fname;
 	}
 
-	
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
@@ -92,13 +98,15 @@ public class UserProfile {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "UserProfile [fname=" + fname + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber
-				+ ", dateOfBirth=" + dateOfBirth + ", emailAddress=" + emailAddress + ", password=" + password
-				+ ", confirmPassword=" + confirmPassword + "]";
+		return "UserProfile [userId=" + userId + ", fname=" + fname + ", lastName=" + lastName + ", phoneNumber="
+				+ phoneNumber + ", dateOfBirth=" + dateOfBirth + ", emailAddress=" + emailAddress + ", password="
+				+ password + ", confirmPassword=" + confirmPassword + "]";
 	}
 
+	
+	
 
 }
