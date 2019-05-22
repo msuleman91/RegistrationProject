@@ -61,7 +61,9 @@ public class UserRepository {
 	public Result updateUser(UserProfile userDetail) {
 
 		try {
-			PreparedStatement ps = (PreparedStatement) this.connection.prepareStatement("UPDATE UserProfile Set fname=? lname=? phonenumber=? dateOfBirth=? emailAddress=? password=? confirmPassword=? where id=?");
+			String updateTableSQL = "UPDATE UserProfile SET fname = ? "
++"lname=?" + "phonenumber=?" +"dateOfBirth=?" + "emailAddress=?"+ "password=?" +"confirmPassword=?"  + " WHERE id= ?";
+			PreparedStatement ps = (PreparedStatement) this.connection.prepareStatement(updateTableSQL);
 			
 			ps.setInt(1, userDetail.getUserId());
 			ps.setString(2, userDetail.getFname());
