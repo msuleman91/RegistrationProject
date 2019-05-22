@@ -11,29 +11,20 @@ public class UserProfile {
 	private String password;
 	private String confirmPassword;
 
-	public UserProfile() {
+	public UserProfile(int userId, String fname, String lastName, String phoneNumber, String dateOfBirth,
+			String emailAddress, String password, String confirmPassword) {
 
-		fname = null;
-		lastName = null;
-		phoneNumber = null;
-		dateOfBirth = null;
-		emailAddress = null;
-		password = null;
-		confirmPassword = null;
-
+		this.userId = userId;
+		this.fname = fname;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.dateOfBirth = dateOfBirth;
+		this.emailAddress = emailAddress;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
 	}
 
-	// Constructor overloading
-
-	/*
-	 * public UserProfile(String fname, String lastName, String phoneNumber, int
-	 * dateOfBirth, String emailAddress, String password, String confirmPassword) {
-	 * 
-	 * this.fname = fname; lastName = lastName; phoneNumber = phoneNumber;
-	 * dateOfBirth = dateOfBirth; emailAddress = emailAddress; password = password;
-	 * confirmPassword = confirmPassword; }
-	 */
-
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -105,8 +96,5 @@ public class UserProfile {
 				+ phoneNumber + ", dateOfBirth=" + dateOfBirth + ", emailAddress=" + emailAddress + ", password="
 				+ password + ", confirmPassword=" + confirmPassword + "]";
 	}
-
-	
-	
 
 }
