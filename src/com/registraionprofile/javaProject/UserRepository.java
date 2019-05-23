@@ -35,6 +35,7 @@ public class UserRepository {
 
 			PreparedStatement ps = (PreparedStatement) this.connection.prepareStatement(
 					"insert into UserProfile (id, firstname, lastname,phonenumber,dateOfBirth,emailAddress,password,confirmPassword) values (?,?,?,?,?,?,?,?)");
+			
 			ps.setInt(1, userDetail.getUserId());
 			ps.setString(2, userDetail.getFname());
 			ps.setString(3, userDetail.getLastName());
@@ -47,7 +48,7 @@ public class UserRepository {
 			int i=ps.executeUpdate();
 
 			if (i == 1) {
-				System.out.println("Update successfully");
+				return Result.SUCCESS;
 			}
 
 		} catch (SQLException e) {
@@ -67,16 +68,19 @@ public class UserRepository {
 			PreparedStatement ps = (PreparedStatement) this.connection.prepareStatement("UPDATE UserProfile SET firstname = ?,lastname=?,phonenumber=?,dateOfBirth=?,emailAddress=?,password=?,confirmPassword=?"
 					+ " WHERE id= ?");
 
-			ps.setInt(1, userDetail.getUserId());
-			ps.setString(2, userDetail.getFname());
-			ps.setString(3, userDetail.getLastName());
-			ps.setString(4, userDetail.getPhoneNumber());
-			ps.setString(5, userDetail.getDateOfBirth());
-			ps.setString(6, userDetail.getEmailAddress());
-			ps.setString(7, userDetail.getPassword());
-			ps.setString(8, userDetail.getConfirmPassword());
+			
+			ps.setString(1, userDetail.getFname());
+			ps.setString(2, userDetail.getLastName());
+			ps.setString(3, userDetail.getPhoneNumber());
+			ps.setString(4, userDetail.getDateOfBirth());
+			ps.setString(5, userDetail.getEmailAddress());
+			ps.setString(6, userDetail.getPassword());
+			ps.setString(7, userDetail.getConfirmPassword());
+			ps.setInt(8, userDetail.getUserId());
+			
+			int i=ps.executeUpdate();
 
-			if (ps.executeUpdate() == 1) {
+			if (i == 1) {
 
 				return Result.SUCCESS;
 			}
