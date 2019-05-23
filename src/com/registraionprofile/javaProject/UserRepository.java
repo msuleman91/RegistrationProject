@@ -27,8 +27,6 @@ public class UserRepository {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	// add the User
 	public Result addUser(UserProfile userDetail) {
@@ -45,9 +43,11 @@ public class UserRepository {
 			ps.setString(6, userDetail.getEmailAddress());
 			ps.setString(7, userDetail.getPassword());
 			ps.setString(8, userDetail.getConfirmPassword());
+			
+			int i=ps.executeUpdate();
 
-			if (ps.executeUpdate() == 1) {
-				return Result.SUCCESS;
+			if (i == 1) {
+				System.out.println("Update successfully");
 			}
 
 		} catch (SQLException e) {
@@ -57,14 +57,16 @@ public class UserRepository {
 		return Result.FAILURE;
 
 	}
+
 //Update User
 	public Result updateUser(UserProfile userDetail) {
 
 		try {
-			String updateTableSQL = "UPDATE UserProfile SET fname = ? "
-+"lname=?" + "phonenumber=?" +"dateOfBirth=?" + "emailAddress=?"+ "password=?" +"confirmPassword=?"  + " WHERE id= ?";
-			PreparedStatement ps = (PreparedStatement) this.connection.prepareStatement(updateTableSQL);
-			
+		//	String updateTableSQL = "UPDATE UserProfile SET firstname = ?,lastname=?,phonenumber=?,dateOfBirth=?,emailAddress=?,password=?,confirmPassword=?"
+			//		+ " WHERE id= ?";
+			PreparedStatement ps = (PreparedStatement) this.connection.prepareStatement("UPDATE UserProfile SET firstname = ?,lastname=?,phonenumber=?,dateOfBirth=?,emailAddress=?,password=?,confirmPassword=?"
+					+ " WHERE id= ?");
+
 			ps.setInt(1, userDetail.getUserId());
 			ps.setString(2, userDetail.getFname());
 			ps.setString(3, userDetail.getLastName());
@@ -76,7 +78,7 @@ public class UserRepository {
 
 			if (ps.executeUpdate() == 1) {
 
-				System.out.println("update successfully");
+				return Result.SUCCESS;
 			}
 
 		} catch (SQLException e) {
@@ -89,19 +91,19 @@ public class UserRepository {
 
 	// Delete user by ID
 	public Result removeUser(int id) {
-		
+
 		try {
 			PreparedStatement ps = (PreparedStatement) connection
 					.prepareStatement("DELETE FROM UserProfile where id=?");
 
 			ps.setInt(1, id);
-			int i=ps.executeUpdate();
-			
-			if(i==1) {
-				System.out.println("Succesfully removed");;
-				
-			}
+			int i = ps.executeUpdate();
 
+			if (i == 1) {
+				System.out.println("Succesfully removed");
+				;
+
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
